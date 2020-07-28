@@ -2,22 +2,34 @@
 {% load crispy_forms_tags %}
 
 {% block css %}
+{{ block.super }}
 <style>
   .center {
     text-align: center;
-    margin-top: 15%;
+    margin-top: 10%;
   }
 </style>
 {% endblock %}
 
 {% block body %}
-<div class='center'>
-  <form method="post"> {% csrf_token %}
-    <h1>Welcome</h1>
-    {{ form.username|as_crispy_field }}
-    {{ form.password|as_crispy_field }}
-    <br>
-    <button type="submit" class="btn btn-primary">Login</button>
-  </form>
+<div class='row center'>
+  <div class='col-md-5'>
+  </div>
+  <div class='col-md-2'>
+    <div class='center'>
+      <form method="post"> {% csrf_token %}
+        <h1>Welcome</h1>
+        <br>
+        {{ form.username }}
+        <br>
+        {{ form.password }}
+        <br>
+        <button type="submit" class="btn btn-primary">Login</button>
+        <a type="button" href='{% url "home_page" %}' class="btn btn-default">Home Page</a>
+      </form>
+    </div>
+  </div>
+  <div class='col-md-5'>
+  </div>
 </div>
 {% endblock body %}

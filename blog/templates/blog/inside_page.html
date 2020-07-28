@@ -1,14 +1,30 @@
 {% extends "blog/base.html" %}
 
+{% block header_button %}
+    <a href="{% url 'account_logout' %}" class='btn btn-default' style='float: right;'>Sign Out</a>
+{% endblock %}
+
 {% block body %}
   <div class="container" style='margin-top: 1%'>
-    <a href="{% url 'account_logout' %}" class='btn btn-default' style='float: right;'>Sign Out</a>
-    <h3>User's Info</h3>
-    <p>First Name: {{ object.first_name }}</p>
-    <p>Middle Name: {{ object.middle_name }}</p>
-    <p>Last Name: {{ object.last_name }}</p>
-    <p>Gender: {{ object.gender }}</p>
-    <p>Occupation: {{ object.occupation }}</p>
+    <div>
+    <h3 style="text-align: center;">User's Info</h3>
+    <table class='table'>
+      <tr>
+        <th>Username</th>
+        <th>First Name</th>
+        <th>Middle Name</th>
+        <th>Last Name</th>
+        <th>Gender</th>
+        <th>Occupation</th>
+      </tr>
+      <tr>
+        <td>{{ object.user }}</td>
+        <td>{{ object.first_name }}</td>
+        <td>{{ object.middle_name }}</td>
+        <td>{{ object.last_name }}</td>
+        <td>{{ object.gender }}</td>
+        <td>{{ object.occupation }}</td>
+      </tr>
+    </table>
   </div>
-
 {% endblock %}

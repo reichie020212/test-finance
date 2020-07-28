@@ -58,13 +58,20 @@ class Step3Form(forms.Form):
 class LoginForm(forms.Form):
     username = forms.CharField(
         required=True,
-        label='Username',
+        label='',
     )
     password = forms.CharField(
         required=True,
         widget=forms.PasswordInput(),
-        label='Password',
+        label='',
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['username'].widget.attrs['class'] = 'form-control'
+        self.fields['password'].widget.attrs['class'] = 'form-control'
+        self.fields['password'].widget.attrs['placeholder'] = 'Password'
+        self.fields['username'].widget.attrs['placeholder'] = 'Username'
 
     def clean(self):
         data = self.cleaned_data

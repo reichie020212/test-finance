@@ -1,6 +1,7 @@
 {% extends "blog/base.html" %}
 
 {% block css %}
+{{ block.super }}
 <style>
   .center {
     text-align: center;
@@ -9,11 +10,14 @@
 </style>
 {% endblock %}
 
+{% block header_button %}
+  <a type="button" href="{% url 'register_redirection' %}" class="btn btn-default">Register</a>
+  <a type="button" href="{% url 'login_page' %}" class="btn btn-default">Login</a>
+{% endblock %}
+
 {% block body %}
 <div class='center'>
   <h1>Welcome</h1>
   <br>
-  <a type="button" href="{% url 'register_redirection' %}" class="btn btn-default">Register</a>
-  <a type="button" href="{% url 'login_page' %}" class="btn btn-default">Login</a>
 </div>
 {% endblock body %}

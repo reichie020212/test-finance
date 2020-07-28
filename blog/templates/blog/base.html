@@ -6,10 +6,81 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     {% block css %}
+      <style>
+        .messages-wrapper .messages .alert {
+          margin-bottom: 15px;
+          margin-top: 0;
+        }
+        .messages-wrapper .messages .alert.impersonate {
+          padding: 0;
+          border-color: #d8d8d8;
+          color: #585858;
+          box-shadow: inset 0 -10px 10px -10px #a5a5a5;
+          background: repeating-linear-gradient(-45deg, #d8d8d8, #d8d8d8 10px, #dddddd 10px, #dddddd 20px);
+        }
+        .messages-wrapper .messages .alert.impersonate .label,
+        .messages-wrapper .messages .alert.impersonate .btn {
+          background-color: #585858;
+        }
+        .messages-wrapper .messages .alert.impersonate .btn {
+          margin-top: 7px;
+        }
+        .messages-wrapper .messages .alert p {
+          margin: 10px 0;
+        }
+        .wrap {
+          min-height: 100%;
+          position: relative;
+          margin-top: 2%;
+        }
+        .bg-dark {
+          background-color: #343a40!important;
+        }
+        .vertical-center {
+          margin: 0;
+          position: absolute;
+          top: 50%;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+        .right-align {
+          text-align: right;
+        }
+      </style>
     {% endblock css %}
     {% block js %}{% endblock %}
   </head>
   <body>
+    {% block header %}
+      <header>
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+          <div class="container d-flex justify-content-between">
+            <div class="vertical-center">
+              <h3 style="color: white;">My Test Site</h3>
+            </div>
+            <div class="right-align">
+              {% block header_button %}
+              {% endblock %}
+            </div>
+          </div>
+        </div>
+      </header>
+    {% endblock %}
+    {% if messages %}
+      <div class="wrap">
+        <div class="messages-wrapper">
+          <div class="messages">
+            {% for message in messages %}
+              <div class="alert {% if message.tags == 'error' %} alert-danger {% else %} alert-success {% endif %}">
+                <div class="container">
+                  {{ message }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
     {% block body %}
     {% endblock body %}
   </body>

@@ -37,6 +37,13 @@ class LoginPageView(FormView):
     form_class = forms.LoginForm
     template_name = 'blog/login_page.html'
 
+    def form_invalid(self, form):
+        messages.error(
+            self.request,
+            'Username or Password is incorrect'
+        )
+        return super().form_invalid(form)
+
     def form_valid(self, form):
         username = form.cleaned_data['username']
         user = User.objects.get(username=username)
@@ -136,5 +143,10 @@ class RegistrationPageView(NamedUrlSessionWizardView):
         )
         if self.request.session.get('step'):
             del self.request.session['step']
+
+        messages.success(
+            self.request,
+            'Registration Successfull'
+        )
 
         return redirect(reverse('login_page'))
