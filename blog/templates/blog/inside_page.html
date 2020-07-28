@@ -1,0 +1,14 @@
+{% extends "blog/base.html" %}
+
+{% block body %}
+  <div class="container" style='margin-top: 1%'>
+    <a href="{% url 'account_logout' %}" class='btn btn-default' style='float: right;'>Sign Out</a>
+    <h3>User's Info</h3>
+    <p>First Name: {{ object.first_name }}</p>
+    <p>Middle Name: {{ object.middle_name }}</p>
+    <p>Last Name: {{ object.last_name }}</p>
+    <p>Gender: {{ object.gender }}</p>
+    <p>Occupation: {{ object.occupation }}</p>
+  </div>
+
+{% endblock %}
