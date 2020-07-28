@@ -36,3 +36,7 @@
 ### Run in localhost
 
 	Open localhost:8000 in your browser
+
+### To test creation of data
+
+	python manage.py test blog
