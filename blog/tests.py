@@ -16,4 +16,6 @@ class BasicTest(TestCase):
         user_info.save()
 
         record = UserInfo.objects.get(pk=1)
-        self.assertEqual(record, user)
+        self.assertEqual(record, user_info)
+        user_info.delete()
+        user.delete()
