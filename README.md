@@ -30,4 +30,9 @@
 	python manage.py createsuperuser
 
 ### Runserver
+
 	python manage.py runserver
+
+### Run in localhost
+
+	Open localhost:8000 in your browser
