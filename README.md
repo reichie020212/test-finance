@@ -28,3 +28,6 @@
 ### Create Admin Account (Optional)
 
 	python manage.py createsuperuser
+
+### Runserver
+	python manage.py runserver
