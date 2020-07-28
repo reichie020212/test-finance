@@ -137,4 +137,4 @@ class RegistrationPageView(NamedUrlSessionWizardView):
         if self.request.session.get('step'):
             del self.request.session['step']
 
-        return redirect(reverse('home_page'))
+        return redirect(reverse('login_page'))
